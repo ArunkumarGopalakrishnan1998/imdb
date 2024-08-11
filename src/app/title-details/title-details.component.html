@@ -1,0 +1,116 @@
+<div class="title__details">
+    <div class="title__details__container">
+        <a routerLink="" routerLinkActive="active" ><span class="material-icons md-24 title__details__close">close</span></a>
+        <img class="title__details__backdrop" src={{this.titleService.imgBaseUrl}}{{selectedTitle.backdrop_path}} />
+        <div class="title__details__backdrop__fade"></div>
+        <div class="title__details__sub">
+            <img class="title__details__poster" src={{this.titleService.imgBaseUrl}}{{selectedTitle.poster_path}}/>
+            <div>
+                <span class="title__details__title">{{selectedTitle.title}}</span>
+                <div class="title__details__specs">
+                    <span class="title__details__date">{{selectedTitle.release_date}}</span>
+                    <div class="title__details__genre" *ngFor="let genre of selectedTitle.genres">
+                        {{genre.name}}
+                    </div> 
+                </div>
+                <span class="title__details__overview">{{selectedTitle.overview}}</span>
+            </div>
+        </div>
+        <div class="title__details__main">
+
+            <div class="title__details__sub1">
+                <a href={{watchLink}} target="_blank" class="title__details__watch">
+                    <span class="material-icons md-36 title__details__watch__icon">play_arrow</span>
+                    <span class="title__details__watch__now">Watch Now</span>
+                </a>
+                <div class="title__details__user__ratings">
+                    <div class="title__details__votes">
+                        <span class="title__details__votes__big">User Score: </span>
+                        <span class="title__details__votes__small">{{votingPercentage}} ({{selectedTitle.vote_count}} votes)</span>
+                    </div>
+                    <div class="title__details__ratings__container">
+                        <div class="title__details__ratings">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="title__details__sub2">
+                <div class="title__details__business">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="title__table__data">
+                                    <div class="title__head title__details__business__left3">Prodcuer</div>
+                                    <div *ngIf="producer && producer.name; else elseProducer" class="title__body title__details__business__left3">{{producer.name}}</div>
+                                    <ng-template #elseProducer class="title__body title__details__business__left3">-</ng-template>
+                                </td>
+                                <td class="title__table__data">
+                                    <div class="title__head title__details__business__left3">Title</div>
+                                    <div class="title__body title__details__business__left3">{{selectedTitle.original_title}}</div>
+                                </td>
+                                <td class="title__table__data">
+                                    <div class="title__head title__details__business__left3">Director</div>
+                                    <div *ngIf="director && director.name; else elseDirector" class="title__body title__details__business__left3">{{director.name}}</div>
+                                    <ng-template #elseDirector class="title__body title__details__business__left3">-</ng-template>
+                                </td>
+                                <td class="title__table__data">
+                                    <div class="title__head title__details__business__left3">Status</div>
+                                    <div class="title__body title__details__business__left3">{{selectedTitle.status}}</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title__table__data">
+                                    <div class="title__head title__details__business__left3">D.O.P</div>
+                                    <div *ngIf="dop && dop.name; else elseDop" class="title__body title__details__business__left3">{{dop.name}}</div>
+                                    <ng-template #elseDop class="title__body title__details__business__left3">-</ng-template>
+                                </td>
+                                <td class="title__table__data">
+                                    <div class="title__head title__details__business__left3">Budget</div>
+                                    <div class="title__body title__details__business__left3">{{budget}}</div>
+                                </td>
+                                <td class="title__table__data">
+                                    <div class="title__head title__details__business__left3">Music Composer</div>
+                                    <div *ngIf="musicComposer && musicComposer.name; else elseMc" class="title__body title__details__business__left3">{{musicComposer.name}}</div>
+                                    <ng-template #elseMc class="title__body title__details__business__left3">-</ng-template>
+                                </td>
+                                <td class="title__table__data">
+                                    <div class="title__head title__details__business__left3">Revenue</div>
+                                    <div  class="title__body title__details__business__left3">{{revenue}}</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>      
+                </div>
+                
+                <div class="title__body title__details__sub2__pc">
+                    <div class="title__head__production ">Production Companies:</div>
+                    <div class="title__details__sub2__pc1" *ngFor="let item of selectedTitle.production_companies">
+                        {{item.name}}
+                    </div>
+                </div>
+
+            </div>
+
+            <div *ngIf="topCasting.length > 0" class="title__head">Top Casting</div>
+            <div class="title__details__sub3">
+                <div *ngFor="let item of topCasting">
+                    <app-card-mini [item]="item"/>
+                </div>
+            </div>
+
+            <div>
+                <app-media [titleId]="titleId"/>
+            </div>
+            <div>
+                <app-reviews [titleId]="titleId"/>
+            </div>
+            <div *ngIf="this.links.facebook_id || this.links.instagram_id || this.links.twitter_id" class="title__social__links">
+                <a *ngIf="this.links.facebook_id" target="_blank" href="https://facebook.com/{{this.links.facebook_id}}"><img class="title__social__img" src="../../assets/350974_facebook_logo_icon.png" width="40px"/></a>
+                <a *ngIf="this.links.instagram_id" target="_blank" href="https://instagram.com/{{this.links.instagram_id}}"><img class="title__social__img" src="../../assets/353424_instagram_logo_icon.png" width="40px"/></a>
+                <a *ngIf="this.links.twitter_id" target="_blank" href="https://x.com/{{this.links.twitter_id}}"><img class="title__social__img" src="../../assets/353427_logo_twitter_icon.png" width="40px"/></a>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,35 @@
+.banner {
+    height: 280px;
+    color: var(--primaryFontColor);
+}
+
+.banner__container {
+    width: 100%;
+}
+
+.banner__fade {
+    background-image: linear-gradient(to right, var(--themeColor) , #26262650);
+    height: 280px;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.banner__content {
+    margin: 0% 5%;
+}
+
+.banner__content__main {
+    font-size: 60px;
+    font-weight: 500;
+}
+
+.banner__content__sub {
+    font-size: 28px;
+}
+
+.banner__img {
+    object-fit: cover;
+}

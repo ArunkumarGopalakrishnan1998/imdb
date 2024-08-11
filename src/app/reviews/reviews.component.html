@@ -1,0 +1,33 @@
+<div *ngIf="reviews.length" class="reviews">
+    <div class="reviews__head">Reviews</div>
+    <div class="reviews__container">
+        <div class="reviews__author">
+            <div class="reviews__author__avatar">
+                <img *ngIf="activeReview.author_details && activeReview.author_details.avatar_path; else elseAvatar" [src]="getAvatarUrl(activeReview.author_details.avatar_path)"/>
+                <ng-template #elseAvatar><img src="https://img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg"/></ng-template>
+            </div>
+            <div class="reviews__author__details">
+                <div class="reviews__top">
+                    <div class="reviews__author">
+                        <div>Written by</div>
+                        <div class="reviews__author__name">{{activeReview.author}}</div>
+                        <div class="reviews__author__date">{{activeReview.created_at}}</div>
+                    </div>
+                    <div class="reviews__controls">
+                        <button class="reviews__controls__button" (click)="prevReview()"><</button>
+                        <a href={{activeReview.url}} target="_blank" class="reviews__controls__button__main">Read more</a>
+                        <button class="reviews__controls__button" (click)="nextReview()">></button>
+                    </div>
+                </div>
+                <div *ngIf="activeReview.author_details && activeReview.author_details.rating" class="reviews__author__ratings">
+                    <div class="reviews__author__rating__container">
+                        <div class="reviews__author__rating">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="reviews__content" [innerHTML]="activeReview.content">
+        </div>
+    </div>
+</div>

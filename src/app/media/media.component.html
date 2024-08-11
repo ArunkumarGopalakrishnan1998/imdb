@@ -1,0 +1,23 @@
+<div class="media">
+    <div class="media__container">
+        <div *ngIf="titleVideos.length > 0">
+            <div class="media__head">Videos</div>
+            <div class="media__content__list">
+                <div *ngFor="let item of titleVideos" class="media__content">
+                    <img class="media__image" *ngIf="!item.show_preview; else showVideo" width="480" height="320" [src]="getVidPreviewUrl(item.key)" (click)="toggleVideo(item)"/>
+                    <ng-template #showVideo><iframe class="media__video" width="480" height="320" [src]="getVideoUrl(item.key)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="media__container">
+        <div *ngIf="titleImages.length > 0">
+            <div class="media__head">Posters</div>
+            <div class="media__content__list">
+                <div *ngFor="let item of titleImages" class="media__content">
+                    <img class="media__image" height="320" [src]="getImgUrl(item.file_path)"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --themeColor: #151515;
+    --secondaryThemeColor: #252525;
+    --primaryFontColor: white;
+    --secondaryFontColor: #767676
+    
+}
+
+body {
+    margin: 0;
+    background-color: var(--themeColor);
+    color: var(--primaryFontColor);
+}
+
+.material-icons.md-18 { font-size: 18px; color: var(--primaryFontColor);}
+.material-icons.md-24 { font-size: 24px; color: var(--primaryFontColor);}
+.material-icons.md-36 { font-size: 36px; color: var(--primaryFontColor);}
+.material-icons.md-48 { font-size: 48px; color: var(--primaryFontColor);}
+.material-icons.md-dark { color: #262626; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

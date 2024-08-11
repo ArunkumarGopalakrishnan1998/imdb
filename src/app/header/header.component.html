@@ -1,0 +1,25 @@
+<div class="header">
+    <div class="header__container">
+
+        <div class="header__left">
+            <img class="header__logo" src={{logoUrl}}/>
+            <div class="header__links">
+                <span>Movies</span>
+                <span>TV Shows</span>
+                <span>People</span>
+            </div>
+        </div>
+        
+        <div class="header__search">
+            <input class="header__search__input" type="text"/>
+            <span class="material-icons md-36 md-dark">search</span>
+        </div>
+
+        <div class="header__right">
+            <div class="header__profile">
+                <span class="material-icons md-24" (click)="titleService.toggleTheme()">dark_mode</span>
+            </div>
+        </div>
+    
+    </div>
+</div>

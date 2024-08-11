@@ -1,0 +1,10 @@
+<div class="card" (click)="navigateToDetails(item.id)">
+    <div class="card__container">
+        <img *ngIf="item.profile_path; else elsePoster" src="{{titleService.imgBaseUrl}}{{item.profile_path}}" class="card__img" width="120px"/>
+        <ng-template #elsePoster><img src="https://img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg" class="card__img" width="120px" height="180px"/></ng-template>
+        <div class="card__details">
+            <span class="card__title">{{item.name}}</span>
+            <span class="card__character">{{item.character}}</span>
+        </div>
+    </div>
+</div>

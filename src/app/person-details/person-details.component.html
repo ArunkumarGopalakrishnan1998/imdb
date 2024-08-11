@@ -1,0 +1,62 @@
+<div class="person__details">
+    <div class="person__details__container">
+        <a routerLink="" routerLinkActive="active" ><span class="material-icons md-24 person__details__close">close</span></a>
+        <div class="person__details__left">
+            <img class="person__poster" src={{this.titleService.imgBaseUrl}}{{person.profile_path}}/>
+            <h3>Personal Info</h3>
+            <div class="person__personal__details">
+                <div class="person__detail__head">Department</div>
+                <div class="person__detail">{{person.known_for_department}}</div>
+    
+                <div class="person__detail__head">Birthday</div>
+                <div class="person__detail">{{person.birthday}}</div>
+    
+                <div class="person__detail__head">Place of birth</div>
+                <div class="person__detail">{{person.place_of_birth}}</div>
+    
+                <div *ngIf="person.deathday" class="person__detail__head">Death day</div>
+                <div *ngIf="person.deathday" class="person__detail">{{person.deathday}}</div>
+    
+                <div class="person__detail__head">Also known as</div>
+                <ul class="title__details__genre" *ngFor="let item of person.also_known_as">
+                    <li>{{item}}</li>
+                </ul> 
+            </div>
+        </div>
+        <div class="person__details__right">
+            <div class="person__name">
+                {{person.name}}
+            </div>
+            <div class="person__biography">
+                {{person.biography}}
+            </div>
+
+            <h3>Known For</h3>
+            <div class="person__known__for" >
+                <div *ngFor="let item of person_known_for">
+                    <app-card [item]="item"/>
+                </div>
+            </div>
+
+            <h3>Photos</h3>
+            <div class="person__images person__known__for">
+                <div *ngFor="let item of person_images">
+                    <img class="person__image" src={{this.titleService.imgBaseUrl}}{{item.file_path}} (click)="openImage(item.file_path)"/>
+                </div>
+            </div>
+
+            <h3>Filmography</h3>
+            <div class="person__filmography person__known__for">
+                <div *ngFor="let item of person_credits">
+                    <div class="person__filmography__unit">
+                        <div style="color: var(--secondaryFontColor);font-weight: bold;">{{item.release_date}}</div>
+                        <div class="person__filmography__details">
+                            <h4 style="margin: 0px 0px 8px 0px; cursor: pointer;" (click)="navigateToDetails(item.id)">{{item.title}}</h4>
+                            <div *ngIf="item.character" >as {{item.character}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
